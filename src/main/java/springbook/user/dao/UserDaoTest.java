@@ -11,7 +11,7 @@ public class UserDaoTest {
         UserDao dao = new DaoFactory().userDao();
 
         User user = new User();
-        user.setId("whiteship");
+        user.setId("whip");
         user.setName("test");
         user.setPassword("1234");
 
