@@ -2,9 +2,13 @@ package springbook.user.dao;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import springbook.user.domain.User;
 
 import java.sql.SQLException;
@@ -13,18 +17,23 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
 
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(classes = Config.class)
 public class UserDaoTest {
 
+    @Autowired
+    private ApplicationContext context;
+
+    @Autowired
     private UserDao dao;
+
     private User user1;
     private User user2;
     private User user3;
 
     @Before
     public void setUp() {
-        ApplicationContext context =
-                new AnnotationConfigApplicationContext(Config.class);
-        this.dao = context.getBean("userDao", UserDao.class);
+      //  this.dao = this.context.getBean("userDao", UserDao.class);
 
         user1 = new User("123","1234","132");
         user2 = new User("1243","12344","13342");
