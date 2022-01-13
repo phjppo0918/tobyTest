@@ -3,15 +3,13 @@ package springbook.user.dao;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import springbook.user.domain.User;
-import springbook.util.ConnectionMaker;
-import springbook.util.impl.DConnectionMaker;
 
 import java.sql.SQLException;
 
 public class UserDaoTest {
     public static void main(String[] args) throws ClassNotFoundException, SQLException {
         ApplicationContext context =
-                new AnnotationConfigApplicationContext(DaoFactory.class);
+                new AnnotationConfigApplicationContext(Config.class);
         UserDao dao = context.getBean("userDao", UserDao.class);
 
         User user = new User();

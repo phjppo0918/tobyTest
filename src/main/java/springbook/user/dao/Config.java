@@ -9,7 +9,7 @@ import springbook.util.impl.DConnectionMaker;
 import javax.sql.DataSource;
 
 @Configuration
-public class DaoFactory {
+public class Config {
     @Bean
     public UserDao userDao() {
         UserDao userDao =  new UserDao();
