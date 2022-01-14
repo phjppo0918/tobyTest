@@ -58,13 +58,13 @@ public class UserDao {
 
             return user;
 
-        }catch (SQLException e) {
+        } catch (SQLException e) {
             throw e;
-        }finally {
-            if(rs != null) {
+        } finally {
+            if (rs != null) {
                 try {
                     rs.close();
-                } catch (SQLException e){
+                } catch (SQLException e) {
 
                 }
             }
@@ -86,13 +86,7 @@ public class UserDao {
     }
 
     public void deleteAll() throws SQLException {
-        this.jdbcContext.workWithStatementStrategy(new StatementStrategy() {
-            @Override
-            public PreparedStatement makePreparedStatement(Connection c) throws SQLException {
-                PreparedStatement ps = c.prepareStatement("delete from users");
-                return ps;
-            }
-        });
+        this.jdbcContext.executeSql("delete from users");
     }
 
     public int getCount() throws SQLException {
@@ -107,13 +101,13 @@ public class UserDao {
             rs.next();
             return rs.getInt(1);
 
-        }catch (SQLException e) {
+        } catch (SQLException e) {
             throw e;
-        }finally {
-            if(rs != null) {
+        } finally {
+            if (rs != null) {
                 try {
                     rs.close();
-                } catch (SQLException e){
+                } catch (SQLException e) {
 
                 }
             }
