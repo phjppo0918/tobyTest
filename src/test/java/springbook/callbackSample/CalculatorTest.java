@@ -1,5 +1,6 @@
 package springbook.callbackSample;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -10,10 +11,17 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class CalculatorTest {
 
+    Calculator calculator;
+    String numFilepath;
+
+    @Before
+    public void setUp() {
+        this.calculator = new Calculator();
+        this.numFilepath = "C:\\tobyTest\\src\\test\\java\\springbook\\callbackSample\\numbers.txt";
+    }
+
     @Test
     public void sumOfNumbers() throws IOException {
-        Calculator calculator = new Calculator();
-        int sum = calculator.calcSum("C:\\tobyTest\\src\\test\\java\\springbook\\callbackSample\\numbers.txt");
-        assertThat(sum, is(10));
+        assertThat(calculator.calcSum(this.numFilepath), is(10));
     }
 }
