@@ -5,7 +5,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.datasource.SingleConnectionDataSource;
 import org.springframework.test.annotation.DirtiesContext;
@@ -41,7 +40,7 @@ public class UserDaoTest {
 
         DataSource dataSource = new SingleConnectionDataSource(
                 "Jdbc:mysql://localhost/testdb", "root", "<password>", true);
-        dao.setDataSource(dataSource);
+        dao.setJdbcTemplate(dataSource);
         user1 = new User("123","1234","132");
         user2 = new User("1243","12344","13342");
         user3 = new User("13243","12344","13342");
