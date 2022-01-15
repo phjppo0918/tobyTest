@@ -5,13 +5,14 @@ import org.springframework.jdbc.core.RowMapper;
 import springbook.user.domain.User;
 
 import javax.sql.DataSource;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.List;
 
 public class UserDao {
     private JdbcTemplate jdbcTemplate;
-
+    private RowMapper<User> userRowMapper =
+            (rs, rowNum) -> new User(rs.getString("id"),
+                    rs.getString("name"),
+                    rs.getString("password"));
 
 
     public void setJdbcTemplate(DataSource dataSource) {
@@ -25,14 +26,7 @@ public class UserDao {
 
     public User get(String id) {
         return this.jdbcTemplate.queryForObject("select * from users where id = ?",
-                new Object[]{id},
-                (rs, rowNum) -> {
-                    User user = new User();
-                    user.setId(rs.getString("id"));
-                    user.setName(rs.getString("name"));
-                    user.setPassword(rs.getString("password"));
-                    return user;
-                });
+                new Object[]{id}, this.userRowMapper);
     }
 
     public void deleteAll() {
@@ -44,14 +38,6 @@ public class UserDao {
     }
 
     public List<User> getAll() {
-        return this.jdbcTemplate.query("select * from users order by id",
-                (rs, rowNum) -> {
-                    User user = new User();
-                    user.setId(rs.getString("id"));
-                    user.setName(rs.getString("name"));
-                    user.setPassword(rs.getString("password"));
-
-                    return user;
-                });
+        return this.jdbcTemplate.query("select * from users order by id", this.userRowMapper);
     }
 }
