@@ -12,7 +12,6 @@ import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import springbook.user.domain.User;
-import springbook.util.JdbcContext;
 
 import javax.sql.DataSource;
 import java.sql.SQLException;
@@ -43,7 +42,6 @@ public class UserDaoTest {
         DataSource dataSource = new SingleConnectionDataSource(
                 "Jdbc:mysql://localhost/testdb", "root", "<password>", true);
         dao.setDataSource(dataSource);
-        dao.setJdbcContext(new JdbcContext(dataSource));
         user1 = new User("123","1234","132");
         user2 = new User("1243","12344","13342");
         user3 = new User("13243","12344","13342");

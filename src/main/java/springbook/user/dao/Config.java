@@ -4,7 +4,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.SimpleDriverDataSource;
 import springbook.util.ConnectionMaker;
-import springbook.util.JdbcContext;
 import springbook.util.impl.DConnectionMaker;
 
 import javax.sql.DataSource;
@@ -15,15 +14,7 @@ public class Config {
     public UserDao userDao() {
         UserDao userDao =  new UserDao();
         userDao.setDataSource(dataSource());
-        userDao.setJdbcContext(jdbcContext());
         return userDao;
-    }
-
-    @Bean
-    public JdbcContext jdbcContext() {
-        JdbcContext jdbcContext = new JdbcContext();
-        jdbcContext.setDataSource(dataSource());
-        return jdbcContext;
     }
 
     @Bean
