@@ -5,6 +5,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.datasource.SingleConnectionDataSource;
 import org.springframework.test.annotation.DirtiesContext;
@@ -118,5 +119,26 @@ public class UserDaoTest {
         assertThat(user1.getId(), is(user2.getId()));
         assertThat(user1.getName(), is(user2.getName()));
         assertThat(user1.getPassword(), is(user2.getPassword()));
+    }
+
+    @Test
+    public void singletonTest1() {
+        Config config = new Config();
+        UserDao dao1 = config.userDao();
+        UserDao dao2 = config.userDao();
+        System.out.println(dao1);
+        System.out.println(dao2);
+    }
+
+    @Test
+    public void singletonTest2() {
+        ApplicationContext context =
+                new AnnotationConfigApplicationContext(Config.class);
+
+        UserDao dao3 = context.getBean("userDao", UserDao.class);
+        UserDao dao4 = context.getBean("userDao", UserDao.class);
+
+        System.out.println(dao3);
+        System.out.println(dao4);
     }
 }
