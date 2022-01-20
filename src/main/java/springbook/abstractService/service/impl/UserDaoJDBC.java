@@ -7,6 +7,7 @@ import springbook.abstractService.model.User;
 import springbook.abstractService.service.UserDao;
 
 import javax.sql.DataSource;
+import java.util.List;
 
 public class UserDaoJDBC implements UserDao {
     private JdbcTemplate jdbcTemplate;
@@ -40,7 +41,7 @@ public class UserDaoJDBC implements UserDao {
 
     @Override
     public void deleteAll() {
-        this.jdbcTemplate.update("delete from user");
+        this.jdbcTemplate.update("delete from user ");
     }
 
     @Override
@@ -50,5 +51,10 @@ public class UserDaoJDBC implements UserDao {
                         " login = ?, recommend = ? where id = ?",
                 user.getName(), user.getPassword(), user.getLevel().intValue(),
                 user.getLogin(), user.getRecommend(), user.getId());
+    }
+
+    @Override
+    public List<User> getAll() {
+        return this.jdbcTemplate.query("select * from user order by id", this.userRowMapper);
     }
 }
