@@ -1,8 +1,11 @@
 package springbook.abstractService.service;
 
+import org.springframework.jdbc.datasource.DataSourceUtils;
+import org.springframework.transaction.support.TransactionSynchronizationManager;
 import springbook.abstractService.model.Level;
 import springbook.abstractService.model.User;
 
+import java.sql.Connection;
 import java.util.List;
 
 public class UserService {

@@ -1,5 +1,7 @@
 package springbook.abstractService.model;
 
+import java.util.Date;
+
 public class User {
     private String id;
     private String name;
@@ -7,6 +9,7 @@ public class User {
     private Level level;
     private int login;
     private int recommend;
+    private Date lastUpgraded;
 
     public User() {}
 
@@ -24,7 +27,7 @@ public class User {
         if (nextLevel == null) {
             throw new IllegalArgumentException(this.level + "은 업그레이드가 불가능합니다.");
         }
-
+        this.lastUpgraded = new Date();
         this.level = nextLevel;
     }
 
