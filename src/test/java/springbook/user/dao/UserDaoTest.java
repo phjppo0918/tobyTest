@@ -1,5 +1,7 @@
 package springbook.user.dao;
 
+import com.tutorial.springbook.user.dao.Config;
+import com.tutorial.springbook.user.dao.UserDao;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -8,10 +10,9 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.datasource.SingleConnectionDataSource;
-import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import springbook.user.domain.User;
+import com.tutorial.springbook.user.domain.User;
 
 import javax.sql.DataSource;
 import java.sql.SQLException;

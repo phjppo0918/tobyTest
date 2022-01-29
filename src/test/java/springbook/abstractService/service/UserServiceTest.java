@@ -1,21 +1,22 @@
 package springbook.abstractService.service;
 
+import com.tutorial.springbook.abstractService.service.UserDao;
+import com.tutorial.springbook.abstractService.service.UserService;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import springbook.abstractService.configuration.Config;
-import springbook.abstractService.model.Level;
-import springbook.abstractService.model.User;
+import com.tutorial.springbook.abstractService.configuration.Config;
+import com.tutorial.springbook.abstractService.model.Level;
+import com.tutorial.springbook.abstractService.model.User;
 
 import java.util.Arrays;
 import java.util.List;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = Config.class)
