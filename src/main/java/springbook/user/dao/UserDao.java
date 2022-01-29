@@ -1,12 +1,15 @@
 package springbook.user.dao;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.stereotype.Component;
 import springbook.user.domain.User;
 
 import javax.sql.DataSource;
 import java.util.List;
 
+@Component
 public class UserDao {
     private JdbcTemplate jdbcTemplate;
     private RowMapper<User> userRowMapper =
@@ -14,9 +17,12 @@ public class UserDao {
                     rs.getString("name"),
                     rs.getString("password"));
 
+    public UserDao() {
+    }
 
-    public void setJdbcTemplate(DataSource dataSource) {
-        this.jdbcTemplate = new JdbcTemplate(dataSource);
+    @Autowired
+    public UserDao(JdbcTemplate jdbcTemplate) {
+        this.jdbcTemplate = jdbcTemplate;
     }
 
     public void add(User user) {

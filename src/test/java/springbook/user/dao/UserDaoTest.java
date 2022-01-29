@@ -23,7 +23,7 @@ import static org.junit.Assert.assertThat;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = Config.class)
-@DirtiesContext
+//@DirtiesContext
 public class UserDaoTest {
 
     @Autowired
@@ -42,7 +42,7 @@ public class UserDaoTest {
 
         DataSource dataSource = new SingleConnectionDataSource(
                 "Jdbc:mysql://localhost/testdb", "root", "<password>", true);
-        dao.setJdbcTemplate(dataSource);
+      //  dao.setJdbcTemplate(dataSource);
         user1 = new User("1231234","1234","132");
         user2 = new User("12413243","12344","13342");
         user3 = new User("132234543","12344","13342");
@@ -119,15 +119,6 @@ public class UserDaoTest {
         assertThat(user1.getId(), is(user2.getId()));
         assertThat(user1.getName(), is(user2.getName()));
         assertThat(user1.getPassword(), is(user2.getPassword()));
-    }
-
-    @Test
-    public void singletonTest1() {
-        Config config = new Config();
-        UserDao dao1 = config.userDao();
-        UserDao dao2 = config.userDao();
-        System.out.println(dao1);
-        System.out.println(dao2);
     }
 
     @Test

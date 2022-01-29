@@ -1,20 +1,23 @@
 package springbook.user.dao;
 
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.SimpleDriverDataSource;
+import org.springframework.stereotype.Component;
 import springbook.util.ConnectionMaker;
 import springbook.util.impl.DConnectionMaker;
 
 import javax.sql.DataSource;
 
 @Configuration
+@ComponentScan(basePackages = "springbook.user")
 public class Config {
+
     @Bean
-    public UserDao userDao() {
-        UserDao userDao =  new UserDao();
-        userDao.setJdbcTemplate(dataSource());
-        return userDao;
+    public JdbcTemplate jdbcTemplate() {
+        return new JdbcTemplate(dataSource());
     }
 
     @Bean
