@@ -11,7 +11,7 @@ import com.tutorial.springbook.util.impl.DConnectionMaker;
 import javax.sql.DataSource;
 
 @Configuration
-@ComponentScan(basePackages = "springbook.user")
+@ComponentScan(basePackages = "com.tutorial.springbook.user")
 public class Config {
 
     @Bean
