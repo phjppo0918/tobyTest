@@ -1,6 +1,6 @@
 package springbook.com.mvcTuto.model;
 
-import com.tutorial.springbook.com.mvcTuto.model.Hello;
+import com.springbook.com.mvcTuto.model.Hello;
 import org.junit.Test;
 import org.springframework.context.support.StaticApplicationContext;
 

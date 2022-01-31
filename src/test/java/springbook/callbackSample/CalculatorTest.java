@@ -1,6 +1,6 @@
 package springbook.callbackSample;
 
-import com.tutorial.springbook.callbackSample.Calculator;
+import com.springbook.callbackSample.Calculator;
 import org.junit.Before;
 import org.junit.Test;
 

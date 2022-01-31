@@ -20,6 +20,7 @@ dependencies {
     implementation 'org.springframework:spring-webmvc:5.2.3.RELEASE'
     implementation 'org.springframework:spring-jdbc:5.2.3.RELEASE'
     implementation 'javax.servlet:servlet-api:2.5'
+    implementation 'org.projectlombok:lombok:1.18.22'
 
     testImplementation 'junit:junit:4.12'
     testImplementation 'org.springframework:spring-test:5.2.3.RELEASE'

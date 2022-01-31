@@ -5,10 +5,10 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import com.tutorial.springbook.abstractService.configuration.Config;
-import com.tutorial.springbook.abstractService.model.Level;
-import com.tutorial.springbook.abstractService.model.User;
-import com.tutorial.springbook.abstractService.service.UserDao;
+import com.springbook.abstractService.configuration.Config;
+import com.springbook.abstractService.model.Level;
+import com.springbook.abstractService.model.User;
+import com.springbook.abstractService.service.UserDao;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
