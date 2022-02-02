@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public class JDBCFlowerRepository implements FlowerRepository {
 
@@ -17,11 +19,20 @@ public class JDBCFlowerRepository implements FlowerRepository {
     }
 
     @Override
-    public Integer save(Flower flower) {
+    public Integer create(Flower flower) {
          jdbcTemplate.update("INSERT INTO flower(name, price, flower_language) VALUES (?, ?, ?)"
             ,flower.getName() , flower.getPrice(), flower.getFlowerLanguage());
 
-         return 0;
+         return getByName(flower.getName()).getId();
+    }
+
+    @Override
+    public List<Flower> getAll() {
+        return this.jdbcTemplate.query("SELECT * FROM flower ORDER BY id",
+                (rs, rowNum) -> new Flower(rs.getInt("id"),
+                        rs.getString("name"),
+                        rs.getInt("price"),
+                        rs.getString("flower_language")));
     }
 
     @Override
@@ -46,6 +57,6 @@ public class JDBCFlowerRepository implements FlowerRepository {
 
     @Override
     public void deleteById(Integer id) {
-
+        jdbcTemplate.update("DELETE FROM flower where id = ?", id);
     }
 }

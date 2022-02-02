@@ -11,6 +11,9 @@
     <title>Title</title>
 </head>
 <body>
-
+${flowerList.get(0).id}
+${flowerList.get(0).name}
+${flowerList.get(0).price}
+${flowerList.get(0).flowerLanguage}
 </body>
 </html>

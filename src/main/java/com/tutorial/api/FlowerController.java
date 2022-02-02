@@ -2,9 +2,9 @@ package com.tutorial.api;
 
 import com.tutorial.core.flower.model.Flower;
 import com.tutorial.core.flower.service.FlowerService;
-import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,17 +22,31 @@ public class FlowerController {
     }
 
     @GetMapping("")
-    public ModelAndView introduce() {
+    public ModelAndView introduce(ModelAndView mav) {
+
+        //ModelAndView mav = new ModelAndView();
+        mav.setViewName("flower/flower-introduce");
+        return mav;
+    }
+
+    @GetMapping("/signup")
+    public ModelAndView signup() {
 
         ModelAndView mav = new ModelAndView();
-        mav.setViewName("flower-introduce");
+        mav.setViewName("flower/insert-flower");
         return mav;
     }
 
     @PostMapping("")
     public String insert(Flower flower) {
+        flowerService.save(flower);
+        return "flower/flower-created";
+    }
 
-        return "insert-finish";
+    @GetMapping("/list")
+    public String flowerList(Model model) {
+        model.addAttribute("flowerList", flowerService.findAll());
+        return "flower/flower-list";
     }
 
 }
