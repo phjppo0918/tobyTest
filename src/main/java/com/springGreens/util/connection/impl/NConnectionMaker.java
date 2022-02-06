@@ -1,0 +1,16 @@
+package com.springGreens.util.connection.impl;
+
+import com.springGreens.util.connection.ConnectionMaker;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
+public class NConnectionMaker implements ConnectionMaker {
+    @Override
+    public Connection makeConnection() throws ClassNotFoundException, SQLException {
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        Connection c = DriverManager.getConnection("jdbc:mysql://localhost/toby_mysql","root", "1234");
+        return c;
+    }
+}
