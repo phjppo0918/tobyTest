@@ -1,13 +1,12 @@
 package com.tutorial.core.flower.repository;
 
 import com.tutorial.core.flower.model.Flower;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-import java.util.List;
+import java.util.Optional;
 
-public interface FlowerRepository {
-    public Integer create(Flower flower);
-    public List<Flower> getAll();
-    public Flower getById(Integer id);
-    public Flower getByName(String name);
-    public void deleteById(Integer id);
+@Repository
+public interface FlowerRepository extends JpaRepository<Flower, Integer> {
+    public Optional<Flower> findByName(String name);
 }

@@ -1,13 +1,6 @@
 package com.tutorial.core.flower.repository.impl;
 
-import com.tutorial.core.flower.model.Flower;
-import com.tutorial.core.flower.repository.FlowerRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.stereotype.Repository;
-
-import java.util.List;
-
+/*
 @Repository
 public class JDBCFlowerRepository implements FlowerRepository {
 
@@ -60,3 +53,4 @@ public class JDBCFlowerRepository implements FlowerRepository {
         jdbcTemplate.update("DELETE FROM flower where id = ?", id);
     }
 }
+*/

@@ -1,18 +1,31 @@
 package com.springGreens.config;
 
-import com.springGreens.dao.UserDao;
-import com.springGreens.util.connection.ConnectionMaker;
-import com.springGreens.util.connection.impl.NConnectionMaker;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.datasource.SimpleDriverDataSource;
+
+import javax.sql.DataSource;
 
 @Configuration
+@ComponentScan(basePackages ="com.springGreens")
 public class Config {
-    @Bean
-    UserDao userDao() {return new UserDao(connectionMaker());}
 
     @Bean
-    ConnectionMaker connectionMaker() {
-        return new NConnectionMaker();
+    JdbcTemplate jdbcTemplate() {
+        return new JdbcTemplate(dataSource());
+    }
+
+    @Bean
+    DataSource dataSource() {
+        SimpleDriverDataSource dataSource = new SimpleDriverDataSource();
+
+        dataSource.setDriverClass(com.mysql.cj.jdbc.Driver.class);
+        dataSource.setUrl("jdbc:mysql://localhost/toby_mysql");
+        dataSource.setUsername("root");
+        dataSource.setPassword("1234");
+
+        return dataSource;
     }
 }

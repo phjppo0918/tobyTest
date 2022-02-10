@@ -7,6 +7,7 @@ import java.util.List;
 public interface FlowerService {
     public Integer save(Flower flower);
     public Flower findByName(String name);
+    public Flower findById(Integer id);
     public void removeById(Integer id);
     public List<Flower> findAll();
 }

@@ -11,6 +11,10 @@
     <title>Title</title>
 </head>
 <body>
-
+꽃 상세
+번호 : ${flower.id} <br>
+이름 : ${flower.name} <br>
+가격 : ${flower.price} <br>
+꽃말 : ${flower.flowerLanguage} <br>
 </body>
 </html>

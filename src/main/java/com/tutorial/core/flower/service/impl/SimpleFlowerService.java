@@ -20,12 +20,17 @@ public class SimpleFlowerService implements FlowerService {
 
     @Override
     public Integer save(Flower flower) {
-        return flowerRepository.create(flower);
+        return flowerRepository.save(flower).getId();
     }
 
     @Override
     public Flower findByName(String name) {
-        return flowerRepository.getByName(name);
+        return flowerRepository.findByName(name).get();
+    }
+
+    @Override
+    public Flower findById(Integer id) {
+        return flowerRepository.findById(id).get();
     }
 
     @Override
@@ -35,6 +40,6 @@ public class SimpleFlowerService implements FlowerService {
 
     @Override
     public List<Flower> findAll() {
-        return flowerRepository.getAll();
+        return flowerRepository.findAll();
     }
 }
